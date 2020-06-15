@@ -24,6 +24,7 @@
     "async": "3.2.0",
     "jose": "1.27.1",
     "lodash": "4.17.15",
+    "pem": "1.14.4",
     "postman-request": "2.88.1-postman.23"
   },
   "devDependencies": {

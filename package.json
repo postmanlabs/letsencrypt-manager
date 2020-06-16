@@ -1,6 +1,6 @@
 {
   "name": "letsencrypt-manager",
-  "version": "0.0.0",
+  "version": "0.0.0-alpha.3",
   "description": "Node module for issuing and managing certificates from letsencrypt",
   "homepage": "https://github.com/postmanlabs/letsencrypt-manager",
   "bugs": "https://github.com/postmanlabs/letsencrypt-manager/issues",

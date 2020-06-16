@@ -26,6 +26,7 @@
     "lodash": "4.17.15",
     "moment": "2.26.0",
     "node-forge": "0.9.1",
+    "parse-domain": "3.0.2",
     "postman-request": "2.88.1-postman.23",
     "rsa-compat": "2.0.8"
   },

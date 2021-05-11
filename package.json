@@ -22,7 +22,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "async": "3.2.0",
-    "lodash": "4.17.15",
+    "lodash": "4.17.21",
     "postman-request": "2.88.1-postman.23"
   },
   "devDependencies": {

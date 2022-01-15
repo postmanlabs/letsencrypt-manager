@@ -41,7 +41,7 @@
     "packity": "0.3.2",
     "parse-gitignore": "1.0.1",
     "recursive-readdir": "2.2.2",
-    "shelljs": "0.8.4",
+    "shelljs": "0.8.5",
     "sinon": "9.0.2"
   },
   "engines": {

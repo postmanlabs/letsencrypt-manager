@@ -1,6 +1,6 @@
 {
   "name": "letsencrypt-manager",
-  "version": "0.0.0",
+  "version": "0.1.0-alpha.7",
   "description": "Node module for issuing and managing certificates from letsencrypt",
   "homepage": "https://github.com/postmanlabs/letsencrypt-manager",
   "bugs": "https://github.com/postmanlabs/letsencrypt-manager/issues",
@@ -22,8 +22,12 @@
   "license": "Apache-2.0",
   "dependencies": {
     "async": "3.2.0",
+    "jose": "1.27.1",
     "lodash": "4.17.15",
-    "postman-request": "2.88.1-postman.23"
+    "moment": "2.26.0",
+    "node-forge": "0.9.1",
+    "postman-request": "2.88.1-postman.23",
+    "validator": "13.1.1"
   },
   "devDependencies": {
     "chai": "4.2.0",

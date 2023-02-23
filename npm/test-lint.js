@@ -3,7 +3,7 @@ require('shelljs/global');
 require('colors');
 
 var async = require('async'),
-    ESLintCLIEngine = require('eslint').CLIEngine,
+    ESLintCLIEngine = require('eslint').ESLint,
 
     /**
      * The list of source code files / directories to be linted.
@@ -30,7 +30,7 @@ module.exports = function (exit) {
          * @returns {*}
          */
         function (next) {
-            next(null, (new ESLintCLIEngine()).executeOnFiles(LINT_SOURCE_DIRS));
+            next(null, (new ESLintCLIEngine()).lintFiles(LINT_SOURCE_DIRS));
         },
 
         /**
@@ -42,14 +42,29 @@ module.exports = function (exit) {
          * @returns {*}
          */
         function (report, next) {
-            var errorReport = ESLintCLIEngine.getErrorResults(report.results);
+            report.then(async (results) => {
+                let errorReport = ESLintCLIEngine.getErrorResults(results),
+                    ESLint = new ESLintCLIEngine();
 
-            // log the result to CLI
-            console.info(ESLintCLIEngine.getFormatter()(report.results));
-            // log the success of the parser if it has no errors
-            (errorReport && !errorReport.length) && console.info('eslint ok!'.green);
-            // ensure that the exit code is non zero in case there was an error
-            next(Number(errorReport && errorReport.length) || 0);
+                const formatter = await ESLint.loadFormatter();
+
+                // log the result to CLI
+                console.info(formatter.format(results));
+
+                // log the success of the parser if it has no errors
+                (errorReport && !errorReport.length) && console.info('eslint ok!'.green);
+
+                // ensure that the exit code is non zero in case there was an error
+                return next(Number(errorReport && errorReport.length) || 0);
+            })
+                .catch((err) => {
+                    console.info({
+                        error: err,
+                        errorType: 'Error parsing promise result',
+                        location: 'test-lint.js',
+                        function: 'test-lint.js'
+                    });
+                });
         }
     ], exit);
 };
